@@ -26,7 +26,8 @@ apptainer run -p 1880:1880 --passphrase cont-name.sif
 ```
 
 ##Emulating Rasp env using Qemu:
-Install the QEMU https://www.qemu.org/download/#linux and go to QEMU-img/, download the raspios from https://downloads.raspberrypi.com/raspios_oldstable_lite_arm64/images/raspios_oldstable_lite_arm64-2023-12-06/2023-12-05-raspios-bullseye-arm64-lite.img.xz?_gl=1*bj3dde*_ga*MTkxNjAzMDQxOC4xNzA0Nzk3MTU3*_ga_22FD70LWDS*MTcwNDc5NzE1OS4xLjEuMTcwNDc5NzIyOS4wLjAuMA..,extract the archive and run this command:
+Install the QEMU https://www.qemu.org/download/#linux and go to QEMU-img/, download the raspios from https://downloads.raspberrypi.com/raspios_oldstable_lite_arm64/images/raspios_oldstable_lite_arm64-2023-12-06/2023-12-05-raspios-bullseye-arm64-lite.img.xz?_gl=1*bj3dde*_ga*MTkxNjAzMDQxOC4xNzA0Nzk3MTU3*_ga_22FD70LWDS*MTcwNDc5NzE1OS4xLjEuMTcwNDc5NzIyOS4wLjAuMA..
+Run this command after extracting the archive
 ```bash
 sudo qemu-system-aarch64 -machine virt -cpu cortex-a72 -smp 6 -m 4G \         
     -kernel Image -append "root=/dev/vda2 rootfstype=ext4 rw panic=0 console=ttyAMA0" \
