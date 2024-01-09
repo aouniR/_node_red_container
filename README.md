@@ -11,8 +11,11 @@ Creation steps of Node-red encrypted container with Apptainer on AMD64 and ARM64
 
 ##Emulating Rasp env using Qemu:
 1-Installing QEMU https://www.qemu.org/download/#linux
-3-Download to the QEMU-img/ from 
-3-sudo qemu-system-aarch64 -machine virt -cpu cortex-a72 -smp 6 -m 4G \         
+2-Go to QEMU-img/
+3-Download to the raspios from 
+https://downloads.raspberrypi.com/raspios_oldstable_lite_arm64/images/raspios_oldstable_lite_arm64-2023-12-06/2023-12-05-raspios-bullseye-arm64-lite.img.xz?_gl=1*bj3dde*_ga*MTkxNjAzMDQxOC4xNzA0Nzk3MTU3*_ga_22FD70LWDS*MTcwNDc5NzE1OS4xLjEuMTcwNDc5NzIyOS4wLjAuMA..
+4-extract the archive and run this command:
+sudo qemu-system-aarch64 -machine virt -cpu cortex-a72 -smp 6 -m 4G \         
     -kernel Image -append "root=/dev/vda2 rootfstype=ext4 rw panic=0 console=ttyAMA0" \
     -drive format=raw,file=2023-12-05-raspios-bullseye-arm64-lite.img,if=none,id=hd0,cache=writeback \
     -device virtio-blk,drive=hd0,bootindex=0 \
