@@ -1,0 +1,18 @@
+BootStrap: docker
+From: alpine:latest
+
+%arguments
+    mount hostfs = no
+
+%post
+    apk --no-cache add nodejs npm
+    cd /app
+    npm install --unsafe-perm node-red
+    
+%files
+    ./settings.js /app/settings_2.js
+    ./flow_test.json /app/flow_test_1.json
+    ./package.json /app/package.json
+
+%runscript
+    npx node-red --settings /app/settings_2.js --port 1880 -v /app/flow_test_1.json

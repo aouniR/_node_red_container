@@ -1,0 +1,276 @@
+[
+    {
+        "id": "f2e072270dff78b7",
+        "type": "tab",
+        "label": "Flow 11",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "cdb2a98995ca6437",
+        "type": "inject",
+        "z": "f2e072270dff78b7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "start",
+        "payloadType": "str",
+        "x": 110,
+        "y": 80,
+        "wires": [
+            [
+                "ed75f25b18478d9d",
+                "727daf60974b319f"
+            ]
+        ]
+    },
+    {
+        "id": "ed75f25b18478d9d",
+        "type": "function",
+        "z": "f2e072270dff78b7",
+        "name": "82404 cells_Full_Image",
+        "func": "if(msg.payload==\"start\"){flow.set(\"i\",0);return msg;\n} else if (flow.get(\"i\") <82404){\n    flow.set(\"i\", flow.get(\"i\") + 1);\n    return msg;\n    }",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 120,
+        "wires": [
+            [
+                "4d538053fe1b9708"
+            ]
+        ]
+    },
+    {
+        "id": "4d538053fe1b9708",
+        "type": "join",
+        "z": "f2e072270dff78b7",
+        "name": "",
+        "mode": "custom",
+        "build": "string",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": ",",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "378",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "2de2cd963ca9df55"
+            ]
+        ]
+    },
+    {
+        "id": "18112c03dabad2d2",
+        "type": "join",
+        "z": "f2e072270dff78b7",
+        "name": "",
+        "mode": "custom",
+        "build": "string",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "218",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 430,
+        "y": 220,
+        "wires": [
+            [
+                "9cf2acf96f3e18a0"
+            ]
+        ]
+    },
+    {
+        "id": "9cf2acf96f3e18a0",
+        "type": "file",
+        "z": "f2e072270dff78b7",
+        "name": "",
+        "filename": "/home/unknown/Documents/upwork/OPC-UA/image_test.csv",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "utf8",
+        "x": 720,
+        "y": 220,
+        "wires": [
+            [
+                "3d0349485ed0ca13"
+            ]
+        ]
+    },
+    {
+        "id": "3d0349485ed0ca13",
+        "type": "debug",
+        "z": "f2e072270dff78b7",
+        "name": "debug 125",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "995d9a7aa9b3ede8",
+        "type": "complete",
+        "z": "f2e072270dff78b7",
+        "name": "",
+        "scope": [
+            "9cf2acf96f3e18a0"
+        ],
+        "uncaught": false,
+        "x": 90,
+        "y": 280,
+        "wires": [
+            [
+                "7e1adcd2f5977c01"
+            ]
+        ]
+    },
+    {
+        "id": "abf2ba4787dc49ee",
+        "type": "debug",
+        "z": "f2e072270dff78b7",
+        "name": "debug 127",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1010,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "f42bcce3712f1456",
+        "type": "complete",
+        "z": "f2e072270dff78b7",
+        "name": "",
+        "scope": [
+            "3ab44813d96dd6b6"
+        ],
+        "uncaught": false,
+        "x": 90,
+        "y": 120,
+        "wires": [
+            [
+                "ed75f25b18478d9d"
+            ]
+        ]
+    },
+    {
+        "id": "727daf60974b319f",
+        "type": "file",
+        "z": "f2e072270dff78b7",
+        "name": "",
+        "filename": "/home/unknown/Documents/upwork/OPC-UA/image_test.csv",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "delete",
+        "encoding": "utf8",
+        "x": 540,
+        "y": 80,
+        "wires": [
+            [
+                "d886a3594fdfc8ff"
+            ]
+        ]
+    },
+    {
+        "id": "d886a3594fdfc8ff",
+        "type": "debug",
+        "z": "f2e072270dff78b7",
+        "name": "debug 165",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 910,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "2de2cd963ca9df55",
+        "type": "function",
+        "z": "f2e072270dff78b7",
+        "name": "split \",\"",
+        "func": "msg.payload = msg.payload.substr(0, msg.payload.length-1);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 310,
+        "y": 220,
+        "wires": [
+            [
+                "18112c03dabad2d2"
+            ]
+        ]
+    },
+    {
+        "id": "7e1adcd2f5977c01",
+        "type": "exec",
+        "z": "f2e072270dff78b7",
+        "command": "curl -F \"file=@/home/unknown/Documents/upwork/OPC-UA/image_test.csv\" http://localhost:8050",
+        "addpay": "",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "5",
+        "winHide": false,
+        "oldrc": false,
+        "name": "",
+        "x": 550,
+        "y": 280,
+        "wires": [
+            [
+                "abf2ba4787dc49ee"
+            ],
+            [
+                "abf2ba4787dc49ee"
+            ],
+            [
+                "abf2ba4787dc49ee"
+            ]
+        ]
+    }
+]
