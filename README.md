@@ -1,7 +1,7 @@
 # _node_red_container
 Creation steps of Node-red encrypted container with Apptainer on AMD64 and ARM64 architectures. 
 
-##Version
+## Version
 The main branch is the dev env, so you could use the v0.1 if you want to test with existing definition files.
 ```bash
 git checkout v0.1
