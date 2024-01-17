@@ -1,11 +1,16 @@
 # _node_red_container
-Creation steps of Node-red encrypted container with Apptainer on AMD64 and ARM64 architectures.
+Creation steps of Node-red encrypted container with Apptainer on AMD64 and ARM64 architectures. 
 
+##Version
+The main branch is the dev env, so you could use the v0.1 if you want to test with existing definition files.
+```bash
+git checkout v0.1
+``` 
 ## Install Apptainer
-Follow the instructions in [Apptainer Installation Guide](https://github.com/apptainer/apptainer/blob/main/INSTALL.md) to install Apptainer.
+Follow the instructions in [Apptainer Installation Guide](https://github.com/apptainer/apptainer/blob/release-1.2/INSTALL.md) to install Apptainer and related dependencies.
 
 ## Create the Apptainer Definition File
-Create the Apptainer definition file (`.def`) specifying the details of your container.
+Create the Apptainer definition file (`.def`) specifying the details of your container, or you can navigate into amd64 or arm64 to use the existing exemples.
 
 
 ## Compile and Create Encrypted Container
