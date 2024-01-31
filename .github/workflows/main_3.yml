@@ -1,0 +1,27 @@
+name: Delivery sif Image to Pi
+
+on:
+  workflow_run:
+    workflows: ["Run Tests"]
+    types:
+      - completed
+
+jobs:
+  deploy_sif:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.PI_SSH_PRIVATE_KEY }}
+
+      - name: Get Raspberry Pi IP
+        id: get_ip
+        run: echo "::set-output name=ip::${{ secrets.PI_IP }}"
+      
+      - name: Fetch SIF file
+        run: wget https://raw.githubusercontent.com/aouniR/_node_red_container/main/sif/your.sif -O delv_$(date +\%Y\%m\%d\%H\%M\%S).sif
+
+      - name: Run SIF Image
+  	run: apptainer run -p 1880:1880 delv_$(date +\%Y\%m\%d\%H\%M\%S).sif
