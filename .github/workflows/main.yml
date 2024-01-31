@@ -32,9 +32,9 @@ jobs:
       - name: Build Apptainer img
         run: |
           ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
-              pi@${{ steps.get_ip.outputs.IP }} 'apptainer build cont-name.sif _node_red_container/arm64/def-name.def'
+              pi@${{ steps.get_ip.outputs.IP }} 'apptainer build sif/cont-name.sif _node_red_container/arm64/def-name.def'
 
       - name: Push Apptainer sif img to Git LFS
         run: |
           ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \
-              pi@${{ steps.get_ip.outputs.IP }} 'git lfs track cont-name.sif && git add . && git commit -m "Commit message: $(date +\%Y\%m\%d\%H\%M\%S)" && git push origin main'
+              pi@${{ steps.get_ip.outputs.IP }} 'git lfs track sif/cont-name.sif && git add . && git commit -m "Commit message: $(date +\%Y\%m\%d\%H\%M\%S)" && git push origin main'
