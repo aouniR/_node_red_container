@@ -24,4 +24,4 @@ jobs:
         run: wget https://raw.githubusercontent.com/aouniR/_node_red_container/main/sif/your.sif -O delv_$(date +\%Y\%m\%d\%H\%M\%S).sif
 
       - name: Run SIF Image
-  	run: apptainer run -p 1880:1880 delv_$(date +\%Y\%m\%d\%H\%M\%S).sif
+        run: apptainer run -p 1880:1880 delv_$(date +\%Y\%m\%d\%H\%M\%S).sif
